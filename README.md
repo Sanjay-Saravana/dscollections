@@ -2,7 +2,7 @@
 
 `dscollections` is a professional, educational, and production-friendly Python package that provides commonly used **Data Structures and Algorithms (DSA)** building blocks.
 
-Author: **Sanjay Saravanan M.Tech(IIT MADRAS)**
+Author: **Sanjay Saravanan M.Tech (IIT MADRAS)**
 
 ## Why dscollections?
 
