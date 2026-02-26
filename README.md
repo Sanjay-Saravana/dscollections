@@ -1,10 +1,10 @@
 # pydscollections
 
-`pydscollections` is a professional, educational, and production-friendly Python package that provides commonly used **Data Structures and Algorithms (DSA)** building blocks.
+`dscollections` is a professional, educational, and production-friendly Python package that provides commonly used **Data Structures and Algorithms (DSA)** building blocks.
 
 Author: **Sanjay Saravanan M.Tech (IIT Madras)**
 
-## Why pydscollections?
+## Why dscollections?
 
 - Clean and consistent APIs.
 - Strong type hints for better IDE support.
@@ -33,13 +33,13 @@ Author: **Sanjay Saravanan M.Tech (IIT Madras)**
 ## Installation
 
 ```bash
-pip install pydscollections
+pip install dscollections
 ```
 
 ## Quick Start
 
 ```python
-from pydscollections import Stack, Queue, BinarySearchTree
+from dscollections import Stack, Queue, BinarySearchTree
 
 stack = Stack[int]()
 stack.push(10)
@@ -62,7 +62,7 @@ print(list(bst.in_order()))  # [5, 10, 12, 15]
 ## Project Layout
 
 ```text
-src/pydscollections/
+src/dscollections/
   __init__.py
   linear.py
   tree.py
