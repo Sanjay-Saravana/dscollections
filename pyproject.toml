@@ -3,7 +3,7 @@ requires = ["hatchling>=1.24.2"]
 build-backend = "hatchling.build"
 
 [project]
-name = "dscollections"
+name = "pydscollections"
 version = "0.2.0"
 description = "A professional and well-documented data structures package for Python."
 readme = "README.md"
