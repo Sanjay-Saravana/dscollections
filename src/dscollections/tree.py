@@ -1,8 +1,4 @@
-"""Tree data structures.
-
-Includes a generic Binary Search Tree with insertion, search, and in-order
-traversal utilities.
-"""
+"""Tree data structures with printable content views."""
 
 from __future__ import annotations
 
@@ -20,23 +16,17 @@ class _BSTNode(Generic[T]):
 
 
 class BinarySearchTree(Generic[T]):
-    """A basic unbalanced Binary Search Tree (BST).
-
-    Values are inserted according to standard BST ordering.
-    Duplicate values are ignored to keep membership deterministic.
-    """
+    """Unbalanced binary search tree."""
 
     def __init__(self) -> None:
         self._root: _BSTNode[T] | None = None
         self._size = 0
 
     def insert(self, value: T) -> None:
-        """Insert *value* into the tree if it is not already present."""
         if self._root is None:
             self._root = _BSTNode(value)
             self._size += 1
             return
-
         current = self._root
         while True:
             if value < current.value:
@@ -55,20 +45,17 @@ class BinarySearchTree(Generic[T]):
                 return
 
     def contains(self, value: T) -> bool:
-        """Return ``True`` if *value* exists in the tree."""
-        current = self._root
-        while current is not None:
-            if value < current.value:
-                current = current.left
-            elif value > current.value:
-                current = current.right
+        cur = self._root
+        while cur is not None:
+            if value < cur.value:
+                cur = cur.left
+            elif value > cur.value:
+                cur = cur.right
             else:
                 return True
         return False
 
     def in_order(self) -> Generator[T, None, None]:
-        """Yield values in sorted order."""
-
         def walk(node: _BSTNode[T] | None) -> Generator[T, None, None]:
             if node is None:
                 return
@@ -78,8 +65,31 @@ class BinarySearchTree(Generic[T]):
 
         yield from walk(self._root)
 
+    def pre_order(self) -> Generator[T, None, None]:
+        def walk(node: _BSTNode[T] | None) -> Generator[T, None, None]:
+            if node is None:
+                return
+            yield node.value
+            yield from walk(node.left)
+            yield from walk(node.right)
+
+        yield from walk(self._root)
+
+    def post_order(self) -> Generator[T, None, None]:
+        def walk(node: _BSTNode[T] | None) -> Generator[T, None, None]:
+            if node is None:
+                return
+            yield from walk(node.left)
+            yield from walk(node.right)
+            yield node.value
+
+        yield from walk(self._root)
+
     def __contains__(self, value: T) -> bool:
         return self.contains(value)
 
     def __len__(self) -> int:
         return self._size
+
+    def __repr__(self) -> str:
+        return f"BinarySearchTree(in_order={list(self.in_order())!r})"

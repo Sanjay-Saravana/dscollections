@@ -1,12 +1,18 @@
-"""dscollections: A polished data-structures package for Python.
+"""dscollections: Professional data structures package for Python."""
 
-This package provides reusable, type-safe, and documented implementations of
-foundational data structures for learning and practical software development.
-"""
-
+from .advanced import DisjointSet, Trie
 from .graph import Graph
-from .heap import MinHeap
-from .linear import Deque, DynamicArray, Queue, SinglyLinkedList, Stack
+from .heap import MaxHeap, MinHeap, PriorityQueue
+from .linear import (
+    CircularQueue,
+    Deque,
+    DoublyLinkedList,
+    DynamicArray,
+    Queue,
+    SinglyLinkedList,
+    Stack,
+)
+from .map import HashMap, HashSet
 from .tree import BinarySearchTree
 
 __all__ = [
@@ -14,8 +20,16 @@ __all__ = [
     "Stack",
     "Queue",
     "Deque",
+    "CircularQueue",
     "SinglyLinkedList",
+    "DoublyLinkedList",
     "BinarySearchTree",
     "Graph",
     "MinHeap",
+    "MaxHeap",
+    "PriorityQueue",
+    "HashMap",
+    "HashSet",
+    "DisjointSet",
+    "Trie",
 ]

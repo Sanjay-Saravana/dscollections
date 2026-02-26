@@ -1,16 +1,17 @@
-# pydscollections
+# dscollections
 
-`dscollections` is a professional, educational, and production-friendly Python package that provides commonly used **Data Structures and Algorithms (DSA)** building blocks.
+`dscollections` is a professional, production-quality Python package for **Data Structures and Algorithms (DSA)**.
 
-Author: **Sanjay Saravanan M.Tech (IIT Madras)**
+Author: **Sanjay Saravanan**
+Version: **0.2.0**
 
-## Why dscollections?
+## Key Highlights
 
-- Clean and consistent APIs.
-- Strong type hints for better IDE support.
-- Thorough inline documentation.
-- Easy to install and publish on PyPI.
-- Tested with `pytest`.
+- Professional package layout (`src/` style) with PyPI-ready metadata.
+- Rich collection of commonly used data structures.
+- Type-hinted APIs for maintainable code and IDE support.
+- Readable object representations: printing a DS shows its contents.
+- Unit tested using `pytest`.
 
 ## Included Data Structures
 
@@ -19,16 +20,28 @@ Author: **Sanjay Saravanan M.Tech (IIT Madras)**
 - `Stack[T]`
 - `Queue[T]`
 - `Deque[T]`
+- `CircularQueue[T]`
 - `SinglyLinkedList[T]`
+- `DoublyLinkedList[T]`
 
 ### Trees
 - `BinarySearchTree[T]`
 
 ### Graphs
-- `Graph[T]` (adjacency-list based)
+- `Graph[T]` (directed or undirected)
 
-### Priority Structures
+### Heaps & Priority
 - `MinHeap[T]`
+- `MaxHeap[T]`
+- `PriorityQueue[T]`
+
+### Hash Structures
+- `HashMap[K, V]`
+- `HashSet[T]`
+
+### Advanced
+- `Trie`
+- `DisjointSet[T]` (Union-Find)
 
 ## Installation
 
@@ -36,40 +49,50 @@ Author: **Sanjay Saravanan M.Tech (IIT Madras)**
 pip install dscollections
 ```
 
-## Quick Start
+Development mode:
+
+```bash
+pip install -e .[dev]
+```
+
+## Print-friendly Behavior
+
+All data structures implement informative `__repr__`, so printing displays content directly.
 
 ```python
-from dscollections import Stack, Queue, BinarySearchTree
+from dscollections import Stack, Queue, BinarySearchTree, HashMap
 
-stack = Stack[int]()
-stack.push(10)
-stack.push(20)
-print(stack.pop())   # 20
-
-queue = Queue[str]()
-queue.enqueue("a")
-queue.enqueue("b")
-print(queue.dequeue())  # "a"
-
+stack = Stack([1, 2, 3])
+queue = Queue(["a", "b"]) 
 bst = BinarySearchTree[int]()
-for value in [10, 5, 15, 12]:
-    bst.insert(value)
+for x in [10, 5, 15]:
+    bst.insert(x)
 
-print(12 in bst)          # True
-print(list(bst.in_order()))  # [5, 10, 12, 15]
+m = HashMap[str, int]()
+m.put("x", 100)
+
+print(stack)  # Stack(top->bottom=[3, 2, 1])
+print(queue)  # Queue(front->rear=['a', 'b'])
+print(bst)    # BinarySearchTree(in_order=[5, 10, 15])
+print(m)      # HashMap({'x': 100})
 ```
 
-## Project Layout
+## Publishing to PyPI
 
-```text
-src/dscollections/
-  __init__.py
-  linear.py
-  tree.py
-  graph.py
-  heap.py
-tests/
-```
+1. Build package:
+   ```bash
+   python -m pip install --upgrade build
+   python -m build
+   ```
+2. Upload to TestPyPI:
+   ```bash
+   python -m pip install --upgrade twine
+   twine upload --repository testpypi dist/*
+   ```
+3. Upload to PyPI:
+   ```bash
+   twine upload dist/*
+   ```
 
 ## License
 
